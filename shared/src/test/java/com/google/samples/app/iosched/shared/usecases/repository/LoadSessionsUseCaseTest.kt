@@ -10,7 +10,7 @@ class LoadSessionsUseCaseTest {
 
     @Test
     fun returnListOfSessions() {
-        val loadSessionUseCase = LoadSessionUseCase(DefaultSessionRepository)
+        val loadSessionUseCase = LoadSessionsUseCase(DefaultSessionRepository)
         val sessions: Result.Success<List<Session>> = loadSessionUseCase.executeNow("test")
             as Result.Success<List<Session>>
 

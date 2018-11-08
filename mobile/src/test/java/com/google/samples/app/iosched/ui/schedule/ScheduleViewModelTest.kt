@@ -2,8 +2,13 @@ package com.google.samples.app.iosched.ui.schedule
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.samples.app.iosched.model.TestData
+import com.google.samples.app.iosched.shared.data.session.DefaultSessionRepository
 import com.google.samples.app.iosched.shared.model.Session
+import com.google.samples.app.iosched.shared.usecases.repository.LoadSessionsUseCase
+import com.google.samples.app.iosched.util.LiveDataTestUtil
+import com.google.samples.app.iosched.util.SyncTaskExecutorRule
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 
@@ -27,9 +32,9 @@ class ScheduleViewModelTest {
         val viewModel = ScheduleViewModel(loadSessionsUseCase)
 
         // Check that data were loaded correctly
-        assertEquals(viewModel.sessions.value?.size, testData.size)
-        assertEquals(viewModel.numberOfSessions.get(), testData.size)
-        assertEquals(viewModel.sessions.value?.get(0), testData[0])
+        assertEquals(LiveDataTestUtil.getValue(viewModel.sessions)?.size, testData.size)
+        assertEquals(LiveDataTestUtil.getValue(viewModel.numberOfSessions), testData.size)
+        assertEquals(LiveDataTestUtil.getValue(viewModel.sessions)?.get(0), testData[0])
     }
 
     @Test
@@ -38,8 +43,8 @@ class ScheduleViewModelTest {
         val viewModel = ScheduleViewModel(createExceptionUseCase())
 
         // Check that the exception was handled correctly
-        assertEquals(viewModel.sessions.value, null)
-        assertEquals(viewModel.numberOfSessions.get(), 0)
+        assertTrue(LiveDataTestUtil.getValue(viewModel.sessions)?.isEmpty() ?: false)
+        assertEquals(LiveDataTestUtil.getValue(viewModel.numberOfSessions), 0)
     }
 
     /**

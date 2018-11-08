@@ -15,7 +15,11 @@ class FeedFragment : Fragment() {
         fun newInstance() = FeedFragment
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         activity?.title = getString(R.string.title_feed)
         return inflater.inflate(R.layout.fragment_feed, container, false)
     }

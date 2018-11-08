@@ -11,29 +11,10 @@ import com.google.samples.app.iosched.ui.map.MapFragment
 import com.google.samples.app.iosched.ui.schedule.ScheduleFragment
 import com.google.samples.app.iosched.util.consume
 import com.google.samples.app.iosched.util.inTransaction
+import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
-
-//    private val onNavigationItemSelectedListener = OnNavigationItemSelectedListener { item ->
-//        when (item.itemId) {
-//            R.id.navigation_schedule -> {
-//                replaceFragment(ScheduleFragment())
-//                return@OnNavigationItemSelectedListener true
-//            }
-//            R.id.navigation_feed -> {
-//                replaceFragment(FeedFragment())
-//                return@OnNavigationItemSelectedListener true
-//            }
-//            R.id.navigation_map -> {
-//                replaceFragment(MapFragment())
-//                return@OnNavigationItemSelectedListener true
-//            }
-//        }
-//        false
-//    }
-//
-
+class MainActivity : DaggerAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

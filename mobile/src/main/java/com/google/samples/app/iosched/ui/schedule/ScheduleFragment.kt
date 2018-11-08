@@ -1,29 +1,36 @@
 package com.google.samples.app.iosched.ui.schedule
 
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.samples.app.iosched.R
 import com.google.samples.app.iosched.databinding.FragmentScheduleBinding
+import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.toolbar.*
+import javax.inject.Inject
 
-class ScheduleFragment : Fragment() {
+class ScheduleFragment : DaggerFragment() {
 
     companion object {
         val TAG: String? = ScheduleFragment::class.java.simpleName
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
 
-        val viewModel: ScheduleViewModel =
-            ViewModelProviders.of(this, ScheduleViewModelFactory())
-                .get(ScheduleViewModel::class.java)
+    private lateinit var viewModel: ScheduleViewModel
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(ScheduleViewModel::class.java)
 
         val binding: FragmentScheduleBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_schedule, container, false
@@ -31,6 +38,7 @@ class ScheduleFragment : Fragment() {
 
         // Set the layout variables
         binding.viewModel = viewModel
+        binding.setLifecycleOwner(this)
 
         // TODO: This is an example subscription
         observeViewModel(viewModel, binding)

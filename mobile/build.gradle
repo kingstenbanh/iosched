@@ -35,23 +35,30 @@ dependencies {
     implementation "com.android.support:design:$rootProject.designLibraryVersion"
     implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutVersion"
 
-    // Arch
+    // Architecture Components
     implementation "android.arch.lifecycle:extensions:$rootProject.archLifecycleVersion"
-    annotationProcessor "android.arch.lifecycle:compiler:$rootProject.archLifecycleVersion"
+    kapt "android.arch.lifecycle:compiler:$rootProject.archLifecycleVersion"
     testImplementation "android.arch.core:core-testing:$rootProject.archLifecycleVersion"
 
+    // Dagger
+    implementation "com.google.dagger:dagger-android:$rootProject.dagger"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.dagger"
+    kapt "com.google.dagger:dagger-compiler:$rootProject.dagger"
+    kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger"
+
     // Utils
+    // Date and time API for Java
     api "com.jakewharton.threetenabp:threetenabp:$rootProject.threetenabpVersion"
     testImplementation "org.threeten:threetenbp:$rootProject.threetenbpVersion"
 
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.kotlinVersion"
 
-    // Inst tests
+    // Instrumention tests
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
     androidTestImplementation "com.android.support.test:runner:$rootProject.runnerVersion"
 
-    // Local test
+    // Local unit tests
     testImplementation "junit:junit:$rootProject.junitVersion"
 
 }

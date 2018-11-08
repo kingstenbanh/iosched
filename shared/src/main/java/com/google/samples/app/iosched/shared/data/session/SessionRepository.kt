@@ -1,13 +1,16 @@
 package com.google.samples.app.iosched.shared.data.session
 
 import com.google.samples.app.iosched.shared.model.Session
+import javax.inject.Inject
+import javax.inject.Singleton
 
 object DefaultSessionRepository : SessionRepository(RemoteSessionDataSource)
 
-open class SessionRepository(private val remoteDataSource: SessionDataSource) {
+@Singleton
+open class SessionRepository @Inject constructor(private val dataSource: SessionDataSource) {
 
     fun getSessions(): List<Session> {
-        return remoteDataSource.getSessions()
+        return dataSource.getSessions()
     }
 
 }
