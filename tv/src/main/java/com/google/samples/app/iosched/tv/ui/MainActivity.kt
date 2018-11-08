@@ -12,23 +12,19 @@
  * the License.
  */
 
-package com.google.samples.app.iosched.tv
+package com.google.samples.app.iosched.tv.ui
 
-import android.app.Activity
 import android.os.Bundle
+import android.support.v4.app.FragmentActivity
+import com.google.samples.app.iosched.tv.R
 
 /**
- * Details activity class that loads [VideoDetailsFragment] class.
+ * Loads [MainFragment].
  */
-class DetailsActivity : Activity() {
+class MainActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_details)
-    }
-
-    companion object {
-        const val SHARED_ELEMENT_NAME = "hero"
-        const val MOVIE = "Movie"
+        setContentView(R.layout.activity_main)
     }
 }
