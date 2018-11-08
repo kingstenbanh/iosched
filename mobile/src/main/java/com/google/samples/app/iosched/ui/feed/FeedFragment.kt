@@ -1,4 +1,4 @@
-package com.google.samples.app.iosched.ui
+package com.google.samples.app.iosched.ui.feed
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

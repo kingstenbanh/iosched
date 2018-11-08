@@ -1,13 +1,14 @@
-package com.google.samples.app.iosched
+package com.google.samples.app.iosched.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener
 import android.support.v4.app.Fragment
-import com.google.samples.app.iosched.ui.FeedFragment
-import com.google.samples.app.iosched.ui.MapFragment
-import com.google.samples.app.iosched.ui.ScheduleFragment
+import com.google.samples.app.iosched.R
+import com.google.samples.app.iosched.ui.feed.FeedFragment
+import com.google.samples.app.iosched.ui.map.MapFragment
+import com.google.samples.app.iosched.ui.schedule.ScheduleFragment
 
 class MainActivity : AppCompatActivity() {
 

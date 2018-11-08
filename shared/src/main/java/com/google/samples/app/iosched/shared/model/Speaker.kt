@@ -14,25 +14,25 @@ data class Speaker(
     /**
      * Profile photo of this speaker.
      */
-    val imageUrl: String,
+    val imageUrl: String = "",
 
     /**
      * Company this speaker works for.
      */
-    val company: String,
+    val company: String = "",
 
     /**
      * Text describing this speaker in detail.
      */
-    val abstract: String,
+    val abstract: String = "",
 
     /**
      * Full URL of the speaker's G+ profile.
      */
-    val gPlusUrl: String,
+    val gPlusUrl: String = "",
 
     /**
      * Full URL of the speaker's Twitter profile.
      */
-    val twitterUrl: String
+    val twitterUrl: String = ""
 )
