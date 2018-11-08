@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.samples.app.iosched.R
+import kotlinx.android.synthetic.main.toolbar.*
 
 class MapFragment : Fragment() {
 
@@ -16,7 +17,10 @@ class MapFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         activity?.title = getString(R.string.title_map)
-        val view = inflater.inflate(R.layout.fragment_map, container, false)
-        return view
+        return inflater.inflate(R.layout.fragment_map, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        toolbar.setTitle(R.string.title_map)
     }
 }

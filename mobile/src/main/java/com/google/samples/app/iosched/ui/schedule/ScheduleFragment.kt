@@ -5,11 +5,13 @@ import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.samples.app.iosched.R
 import com.google.samples.app.iosched.databinding.FragmentScheduleBinding
+import kotlinx.android.synthetic.main.toolbar.*
 
 class ScheduleFragment : Fragment() {
 
@@ -18,7 +20,6 @@ class ScheduleFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        activity?.title = getString(R.string.title_schedule)
 
         val viewModel: ScheduleViewModel =
             ViewModelProviders.of(this, ScheduleViewModelFactory())
@@ -34,6 +35,10 @@ class ScheduleFragment : Fragment() {
         // TODO: This is an example subscription
         observeViewModel(viewModel, binding)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        toolbar.setTitle(R.string.title_schedule)
     }
 
     private fun observeViewModel(viewModel: ScheduleViewModel, b: FragmentScheduleBinding) {
