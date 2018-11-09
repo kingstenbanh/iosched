@@ -10,6 +10,7 @@
         <item name="android:statusBarColor">@color/status_bar</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <item name="android:navigationBarColor">@color/indigo_dark</item>
+        <item name="android:textColorTertiary">@color/light_grey</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -35,6 +36,16 @@
         <item name="android:fontFamily">@font/google_sans</item>
     </style>
 
+    <style name="TextAppearance.IOSched.SessionTitle" parent="@style/TextAppearance.AppCompat.Subhead">
+        <item name="android:fontFamily">@font/google_sans</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.IOSched.Tag" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:fontFamily">@font/google_sans</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
+    </style>
+
     <style name="ThemeOverlay.IOSched.GoogleSans" parent="@style/ThemeOverlay.AppCompat">
         <item name="android:fontFamily">@font/google_sans</item>
     </style>
@@ -42,13 +53,16 @@
     <style name="ThemeOverlay.IOSched.BottomNav" parent="@style/ThemeOverlay.AppCompat.Dark">
         <item name="android:fontFamily">@font/google_sans</item>
     </style>
+
     <style name="Widget.IOSched" parent="@android:style/Widget" />
+
     <style name="Widget.IOSched.BottomNav" parent="@style/Widget.Design.BottomNavigationView">
         <item name="android:background">?colorPrimary</item>
         <item name="itemIconTint">@color/bottom_nav_item</item>
         <item name="itemTextColor">@color/bottom_nav_item</item>
         <item name="android:theme">@style/ThemeOverlay.IOSched.BottomNav</item>
     </style>
+
     <style name="Widget.IOSched.Tabs" parent="@style/Widget.Design.TabLayout">
         <item name="tabTextColor">?colorPrimary</item>
         <item name="tabSelectedTextColor">?colorPrimary</item>

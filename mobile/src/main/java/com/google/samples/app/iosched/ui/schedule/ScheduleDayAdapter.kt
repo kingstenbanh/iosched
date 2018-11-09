@@ -1,13 +1,11 @@
 package com.google.samples.app.iosched.ui.schedule
 
-import android.R.layout
 import android.support.v7.widget.RecyclerView.Adapter
 import android.support.v7.widget.RecyclerView.ViewHolder
-import android.view.View
+import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
+import com.google.samples.app.iosched.databinding.ItemSessionBinding
 import com.google.samples.app.iosched.shared.model.Session
-import com.google.samples.app.iosched.shared.util.inflate
 
 class ScheduleDayAdapter : Adapter<SessionViewHolder>() {
 
@@ -22,7 +20,8 @@ class ScheduleDayAdapter : Adapter<SessionViewHolder>() {
     override fun getItemCount(): Int = sessions.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SessionViewHolder {
-        return SessionViewHolder(parent.inflate(layout.simple_list_item_1))
+        return SessionViewHolder(ItemSessionBinding.inflate(
+            LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: SessionViewHolder, position: Int) {
@@ -31,10 +30,10 @@ class ScheduleDayAdapter : Adapter<SessionViewHolder>() {
 
 }
 
-class SessionViewHolder(itemView: View) : ViewHolder(itemView) {
-    val title: TextView = itemView.findViewById(android.R.id.text1)
+class SessionViewHolder(private val binding: ItemSessionBinding) : ViewHolder(binding.root) {
 
     fun bind(session: Session) {
-        title.text = session.title
+        binding.session = session
+        binding.executePendingBindings()
     }
 }
