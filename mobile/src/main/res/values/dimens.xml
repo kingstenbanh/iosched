@@ -19,4 +19,6 @@
     <dimen name="drawer_width">@dimen/match_parent</dimen>
 
     <dimen name="a11y_min_touch_target_dimen">48dp</dimen>
+
+    <dimen name="app_bar_height">200dp</dimen>
 </resources>

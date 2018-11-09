@@ -13,7 +13,7 @@ class SessionDetailActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.inTransaction {
-                add(R.id.fragment_container, SessionDetailFragment())
+                add(R.id.session_detail_container, SessionDetailFragment())
             }
         }
     }
