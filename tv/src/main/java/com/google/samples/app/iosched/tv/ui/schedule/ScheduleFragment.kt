@@ -30,9 +30,10 @@ class ScheduleFragment : RowsSupportFragment() {
             add(R.id.main_frame, spinnerFragment)
         }
 
+        // TODO: Inject view model factory
         val viewModel: ScheduleViewModel = ViewModelProviders.of(
-            this, ScheduleViewModelFactory()).get(ScheduleViewModel::class.java
-        )
+            this, TODO("ViewModel Factory not provided."))
+            .get(ScheduleViewModel::class.java)
 
         observeViewModel(viewModel)
     }
