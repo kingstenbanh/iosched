@@ -7,10 +7,6 @@ import com.google.samples.app.iosched.shared.model.Tag
 import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay
 
 
-interface SessionDataSource {
-    fun getSessions(): List<Session>
-}
-
 /**
  * TODO: Placeholder
  */

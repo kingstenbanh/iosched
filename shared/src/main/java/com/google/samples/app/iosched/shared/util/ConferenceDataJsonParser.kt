@@ -10,7 +10,9 @@ private val FILENAME = "conference_data.json"
 
 object ConferenceDataJsonParser {
 
-    fun getSessions(): List<Session> {
+    private val testData by lazy { parseConferenceData() }
+
+    private fun parseConferenceData(): TestData {
         val inputStream = this.javaClass.classLoader.getResource(FILENAME)
             .openStream()
         val jsonReader = JsonReader(inputStream.bufferedReader())
@@ -19,9 +21,8 @@ object ConferenceDataJsonParser {
             .registerTypeAdapter(Tag::class.java, TagDeserializer())
             .create()
         val tempData: TestDataTemp = gson.fromJson(jsonReader, TestDataTemp::class.java)
-        val testData = normalize(tempData)
 
-        return testData.sessions
+        return normalize(tempData)
     }
 
     /**
@@ -55,4 +56,8 @@ object ConferenceDataJsonParser {
                 blocks = data.blocks,
                 rooms = data.rooms)
     }
+
+    fun getSessions() = testData.sessions
+
+    fun getTags() = testData.tags
 }
