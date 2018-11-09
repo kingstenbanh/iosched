@@ -7,8 +7,8 @@ import com.google.samples.app.iosched.shared.data.tag.TagRepository
 import com.google.samples.app.iosched.shared.model.Session
 import com.google.samples.app.iosched.shared.model.Tag
 import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay
-import com.google.samples.app.iosched.util.LiveDataTestUtil
-import com.google.samples.app.iosched.util.SyncTaskExecutorRule
+import com.google.samples.app.iosched.test.util.LiveDataTestUtil
+import com.google.samples.app.iosched.test.util.SyncTaskExecutorRule
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue

@@ -1,4 +1,4 @@
-package com.google.samples.app.iosched.util
+package com.google.samples.app.iosched.test.util
 
 import android.support.v7.widget.RecyclerView
 

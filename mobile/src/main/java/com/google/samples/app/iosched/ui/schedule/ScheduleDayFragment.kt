@@ -10,7 +10,7 @@ import android.widget.Toast
 import com.google.samples.app.iosched.R
 import com.google.samples.app.iosched.shared.util.*
 import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay
-import com.google.samples.app.iosched.util.clearDecorations
+import com.google.samples.app.iosched.test.util.clearDecorations
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_schedule_day.*
 import javax.inject.Inject
