@@ -16,4 +16,7 @@ open class SessionRepository @Inject constructor(private val dataSource: Session
         return dataSource.getSessions()
     }
 
+    fun getSession(sessionId: String): Session {
+        return dataSource.getSession(sessionId)
+    }
 }

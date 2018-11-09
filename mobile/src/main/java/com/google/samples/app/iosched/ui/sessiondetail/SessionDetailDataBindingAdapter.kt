@@ -12,10 +12,13 @@ import com.google.samples.app.iosched.shared.model.Speaker
 import com.google.samples.app.iosched.shared.util.SpeakerUtils
 
 @BindingAdapter("app:sessionSpeakers")
-fun sessionSpeakers(layout: LinearLayout, speakers: Set<Speaker>) {
+fun sessionSpeakers(layout: LinearLayout, speakers: Set<Speaker>?) {
     layout.removeAllViews()
-    SpeakerUtils.alphabeticallyOrderedSpeakerList(speakers).forEach {
-        layout.addView(createSessionSpeakerView(layout, it))
+
+    if (speakers != null) {
+        SpeakerUtils.alphabeticallyOrderedSpeakerList(speakers).forEach {
+            layout.addView(createSessionSpeakerView(layout, it))
+        }
     }
 }
 

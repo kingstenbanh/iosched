@@ -29,5 +29,7 @@ class LoadSessionsByDayUseCaseTest {
             return listOf(TestData.session0, TestData.session1, TestData.session2,
                 TestData.session3)
         }
+
+        override fun getSession(sessionId: String) = TestData.session0
     }
 }

@@ -1,6 +1,7 @@
 package com.google.samples.app.iosched.ui.sessiondetail
 
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -10,10 +11,16 @@ import android.support.v7.app.AppCompatActivity
 import android.view.*
 import com.google.samples.app.iosched.R
 import com.google.samples.app.iosched.databinding.FragmentSessionDetailBinding
+import com.google.samples.app.iosched.shared.util.viewModelProvider
+import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
-class SessionDetailFragment : Fragment() {
+class SessionDetailFragment : DaggerFragment() {
 
     private var shareString = ""
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,9 +32,8 @@ class SessionDetailFragment : Fragment() {
         // TODO: wire up detail page to schedule list and get session ID intent extra (b/72671324)
         val dummySessionId = "1"
 
-        val sessionDetailViewModel = ViewModelProviders
-            .of(this, SessionDetailViewModelFactory(dummySessionId))
-            .get(SessionDetailViewModel::class.java)
+        val sessionDetailViewModel: SessionDetailViewModel = viewModelProvider(viewModelFactory)
+        sessionDetailViewModel.loadSessionById(dummySessionId)
 
         val binding: FragmentSessionDetailBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_session_detail, container, false
