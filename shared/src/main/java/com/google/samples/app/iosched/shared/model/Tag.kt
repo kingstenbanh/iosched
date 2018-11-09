@@ -25,4 +25,11 @@ data class Tag (
      * The color associated with this tag as a color integer.
      */
     val color: Int
-)
+) {
+
+    /**
+     * Names or colors can change anytime. Only IDs are used for equality.
+     */
+    override fun equals(other: Any?): Boolean =
+        this === other || (other is Tag && other.id == id)
+}

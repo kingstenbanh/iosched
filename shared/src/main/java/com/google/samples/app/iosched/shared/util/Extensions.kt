@@ -1,8 +1,6 @@
 package com.google.samples.app.iosched.shared.util
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
+import android.arch.lifecycle.*
 import android.os.Bundle
 import android.os.Parcel
 import android.support.annotation.LayoutRes
@@ -97,3 +95,14 @@ inline fun <reified T : Enum<T>> Bundle.getEnum(key: String): T = enumValueOf(ge
 
 // endregion
 
+// region LiveData
+
+/** Uses `Transformations.map` on a LiveData */
+fun <X, T> LiveData<T>.map(body: (T) -> X): LiveData<X> {
+    return Transformations.map(this, body)
+}
+
+/** Uses `Transformations.switchMap` on a LiveData */
+fun <X, T> LiveData<T>.switchMap(body: (T) -> LiveData<X>): LiveData<X> {
+    return Transformations.switchMap(this, body)
+}
