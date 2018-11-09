@@ -1,4 +1,4 @@
-package com.google.samples.app.iosched.util
+package com.google.samples.app.iosched.shared.util
 
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction

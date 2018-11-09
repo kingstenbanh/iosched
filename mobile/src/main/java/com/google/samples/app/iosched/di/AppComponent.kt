@@ -1,7 +1,7 @@
 package com.google.samples.app.iosched.di
 
 import com.google.samples.app.iosched.shared.di.SharedModule
-import com.google.samples.app.iosched.ui.MainApplication
+import com.google.samples.app.iosched.MainApplication
 import com.google.samples.app.iosched.ui.MainModule
 import dagger.Component
 import dagger.android.AndroidInjector

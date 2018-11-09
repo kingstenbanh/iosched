@@ -30,11 +30,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
 
-        dataBinding {
-            enabled true
+        staging {
+            initWith debug
         }
     }
-
+    dataBinding {
+        enabled true
+    }
 }
 
 dependencies {
@@ -51,6 +53,7 @@ dependencies {
 
     // Utils
     api "com.jakewharton.timber:timber:$rootProject.timberVersion"
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
 
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.kotlinVersion"

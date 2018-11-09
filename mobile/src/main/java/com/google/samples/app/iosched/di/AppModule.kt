@@ -1,7 +1,7 @@
 package com.google.samples.app.iosched.di
 
 import android.content.Context
-import com.google.samples.app.iosched.ui.MainApplication
+import com.google.samples.app.iosched.MainApplication
 import dagger.Module
 import dagger.Provides
 
@@ -9,8 +9,7 @@ import dagger.Provides
  * Defines all the classes that need to be provided in the scope of the app.
  *
  * Define here all objects that are shared throughout the app, like SharedPreferences, navigators or
- * others, define them here. If some of those objects are singletons, they should be annotated
- * with `@Singleton`.
+ * others If some of those objects are singletons, they should be annotated with `@Singleton`.
  */
 @Module
 class AppModule {

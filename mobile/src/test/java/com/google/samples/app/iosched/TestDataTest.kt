@@ -1,17 +1,18 @@
 package com.google.samples.app.iosched
 
+import com.google.samples.app.iosched.shared.util.ConferenceDataJsonParser
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
-import org.junit.Assert.*
 
 /**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
+ * Checks that the data loading mechanism for the staging variant works.
  */
-class ExampleUnitTest {
+class TestDataTest {
+
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun loadJson_resultIsNotEmpty() {
+        val sessions = ConferenceDataJsonParser.getSessions()
+        assertTrue(sessions.isNotEmpty())
     }
 }

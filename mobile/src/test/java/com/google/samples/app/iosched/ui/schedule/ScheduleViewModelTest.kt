@@ -25,7 +25,7 @@ class ScheduleViewModelTest {
     @Test
     fun testDataIsLoaded_ObservablesUpdated() {
         // Create a test use cases with test data
-        val testData = listOf((TestData.session1))
+        val testData = TestSessionDataSource.getSessions()
         val loadSessionsUseCase = createUseCase(testData)
 
         // Create ViewModel with the use case
@@ -51,7 +51,7 @@ class ScheduleViewModelTest {
      * Creates a use case that will return the provided list of sessions.
      */
     private fun createUseCase(sessions: List<Session>): LoadSessionsUseCase {
-        return object: LoadSessionsUseCase(DefaultSessionRepository) {
+        return object: LoadSessionsUseCase(SessionRepository(TestSessionDataSource)) {
             override fun execute(parameters: String): List<Session> {
                 return sessions
             }
@@ -62,7 +62,7 @@ class ScheduleViewModelTest {
      * Creates a use case that throws an exception.
      */
     private fun createExceptionUseCase(): LoadSessionsUseCase {
-        return object: LoadSessionsUseCase(DefaultSessionRepository) {
+        return object: LoadSessionsUseCase(SessionRepository(TestSessionDataSource)) {
             override fun execute(parameters: String): List<Session> {
                 throw Exception("Testing exception")
             }

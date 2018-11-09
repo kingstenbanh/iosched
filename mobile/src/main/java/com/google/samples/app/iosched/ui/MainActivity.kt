@@ -1,16 +1,13 @@
 package com.google.samples.app.iosched.ui
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
-import android.support.design.widget.BottomNavigationView.OnNavigationItemSelectedListener
 import android.support.v4.app.Fragment
 import com.google.samples.app.iosched.R
 import com.google.samples.app.iosched.ui.feed.FeedFragment
 import com.google.samples.app.iosched.ui.map.MapFragment
 import com.google.samples.app.iosched.ui.schedule.ScheduleFragment
-import com.google.samples.app.iosched.util.consume
-import com.google.samples.app.iosched.util.inTransaction
+import com.google.samples.app.iosched.shared.util.consume
+import com.google.samples.app.iosched.shared.util.inTransaction
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -32,8 +29,16 @@ class MainActivity : DaggerAppCompatActivity() {
 
         navigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.navigation_schedule -> consume { replaceFragment(ScheduleFragment()) }
-                R.id.navigation_feed -> consume { replaceFragment(FeedFragment()) }
+                R.id.navigation_schedule -> consume {
+                    replaceFragment(
+                        ScheduleFragment()
+                    )
+                }
+                R.id.navigation_feed -> consume {
+                    replaceFragment(
+                        FeedFragment()
+                    )
+                }
                 R.id.navigation_map -> consume { replaceFragment(MapFragment()) }
                 else -> false
             }

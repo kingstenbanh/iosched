@@ -6,6 +6,9 @@ import javax.inject.Singleton
 
 object DefaultSessionRepository : SessionRepository(RemoteSessionDataSource)
 
+/**
+ * Single point of access to session data for the presentation layer.
+ */
 @Singleton
 open class SessionRepository @Inject constructor(private val dataSource: SessionDataSource) {
 
