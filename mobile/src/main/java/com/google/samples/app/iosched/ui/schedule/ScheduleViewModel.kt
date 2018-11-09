@@ -10,7 +10,6 @@ import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay
 import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay.DAY_1
 import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay.DAY_2
 import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay.DAY_3
-import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay.PRECONFERENCE_DAY
 import com.google.samples.app.iosched.shared.util.map
 import timber.log.Timber
 import javax.inject.Inject
