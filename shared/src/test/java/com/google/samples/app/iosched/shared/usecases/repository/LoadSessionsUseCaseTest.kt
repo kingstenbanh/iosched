@@ -11,8 +11,8 @@ class LoadSessionsUseCaseTest {
     @Test
     fun returnListOfSessions() {
         val loadSessionUseCase = LoadSessionsUseCase(SessionRepository(TestSessionDataSource))
-        val sessions: Result.Success<List<Session>> = loadSessionUseCase.executeNow("test")
-            as Result.Success<List<Session>>
+        val sessions: Result.Success<List<Session>> =
+            loadSessionUseCase.executeNow(Unit) as Result.Success<List<Session>>
 
         assertEquals(sessions.data, SessionRepository(TestSessionDataSource).getSessions())
     }

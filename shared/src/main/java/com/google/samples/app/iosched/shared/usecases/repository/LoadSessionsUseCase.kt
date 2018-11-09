@@ -7,9 +7,9 @@ import javax.inject.Inject
 
 open class LoadSessionsUseCase @Inject constructor(
     private val repository: SessionRepository
-) : UseCase<String, List<Session>>() {
+) : UseCase<Unit, List<Session>>() {
 
-    override fun execute(parameters: String): List<Session> {
+    override fun execute(parameters: Unit): List<Session> {
         Thread.sleep(3000)
         return repository.getSessions()
     }

@@ -2,6 +2,7 @@ package com.google.samples.app.iosched.shared.util
 
 import com.google.samples.app.iosched.shared.model.Room
 import com.google.samples.app.iosched.shared.model.Session
+import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay
 import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay.DAY_1
 import org.junit.Assert
 import org.junit.Assert.assertFalse
@@ -9,6 +10,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.threeten.bp.ZonedDateTime
+import java.util.regex.Pattern
 
 class TimeUitlsTest {
 
@@ -42,6 +44,14 @@ class TimeUitlsTest {
         val alsoNotInDay1 = Session("3", DAY_1.start, day1PlusMinute,
             "", "", room1, "", "", "", emptyList(), emptySet(), "", emptySet())
         assertFalse(DAY_1.contains(alsoNotInDay1))
+    }
+
+    @Test
+    fun conferenceDay_formatMonthDay() {
+        val pattern = Pattern.compile("""0\d""") // zero followed by any digit
+        ConferenceDay.values().forEach {
+            assertFalse(pattern.matcher(it.formatMonthDay()).find())
+        }
     }
 
     @Test fun timeString_sameMeridiem() {
