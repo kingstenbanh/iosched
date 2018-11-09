@@ -8,7 +8,6 @@ import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay
 import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay.DAY_1
 import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay.DAY_2
 import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay.DAY_3
-import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay.PRECONFERENCE_DAY
 
 /**
  * TODO: Temporary test data, improve.
@@ -29,7 +28,7 @@ object TestData {
     val room = Room(id = "1", name = "Tent 1", capacity = 40)
 
     val session0 = Session(id = "0", title = "Session 0", abstract = "",
-        startTime = PRECONFERENCE_DAY.start, endTime = PRECONFERENCE_DAY.end,
+        startTime = DAY_1.start, endTime = DAY_1.end,
         room = room, sessionUrl = "", liveStreamUrl = "", youTubeUrl = "", photoUrl = "",
         tags = listOf(androidTag, webTag), speakers = setOf(speaker),
         relatedSessions = emptySet())

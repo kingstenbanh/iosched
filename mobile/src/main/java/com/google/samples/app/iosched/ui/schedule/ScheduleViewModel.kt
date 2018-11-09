@@ -32,7 +32,6 @@ class ScheduleViewModel @Inject constructor(
     private val loadSessionsResult = MutableLiveData<Result<Map<ConferenceDay, List<Session>>>>()
     private val loadTagsResult = MutableLiveData<Result<List<Tag>>>()
 
-    private val preconferenceSessions: LiveData<List<Session>>
     private val day1Sessions: LiveData<List<Session>>
     private val day2Sessions: LiveData<List<Session>>
     private val day3Sessions: LiveData<List<Session>>
@@ -44,9 +43,6 @@ class ScheduleViewModel @Inject constructor(
         loadTagsByCategoryUseCase.executeAsync(Unit, loadTagsResult)
 
         // map LiveData results from UseCase to each day's individual LiveData
-        preconferenceSessions = loadSessionsResult.map {
-            (it as? Result.Success)?.data?.get(PRECONFERENCE_DAY) ?: emptyList()
-        }
         day1Sessions = loadSessionsResult.map {
             (it as? Result.Success)?.data?.get(DAY_1) ?: emptyList()
         }
@@ -73,10 +69,10 @@ class ScheduleViewModel @Inject constructor(
     fun onErrorMessageShown() { errorMessageShown.value = true }
 
     fun getSessionsForDay(day: ConferenceDay): LiveData<List<Session>> = when (day) {
-        PRECONFERENCE_DAY -> preconferenceSessions
         DAY_1 -> day1Sessions
         DAY_2 -> day2Sessions
         DAY_3 -> day3Sessions
+        else -> throw IllegalStateException("Unknown day")
     }
 
     override fun openSessionDetail(id: String) {
