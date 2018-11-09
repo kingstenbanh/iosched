@@ -15,7 +15,9 @@ open class LoadSessionsByDayUseCase @Inject constructor(private val repository: 
 
         return ArrayMap<ConferenceDay, List<Session>>().apply {
             for (day in ConferenceDay.values()) {
-                put(day, allSessions.filter { day.contains(it) })
+                put(day, allSessions
+                    .filter { day.contains(it) }
+                    .sortedBy { it.startTime })
             }
         }
     }

@@ -17,4 +17,5 @@
 
     <color name="navdrawer_background">@color/white</color>
     <color name="lighter_grey">#f6f6f6</color>
+    <color name="default_tag_color">#999</color>
 </resources>
