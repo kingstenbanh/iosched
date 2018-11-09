@@ -12,7 +12,7 @@ import android.view.ViewGroup
 import com.google.samples.app.iosched.R
 import com.google.samples.app.iosched.databinding.FragmentScheduleBinding
 import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay
-import com.google.samples.app.iosched.shared.util.viewModelProvider
+import com.google.samples.app.iosched.shared.util.activityViewModelProvider
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_schedule.*
 import javax.inject.Inject
@@ -37,7 +37,7 @@ class ScheduleFragment : DaggerFragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        viewModel = viewModelProvider(viewModelFactory)
+        viewModel = activityViewModelProvider(viewModelFactory)
 
         val binding: FragmentScheduleBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_schedule, container, false
