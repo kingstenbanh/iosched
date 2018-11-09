@@ -1,15 +1,15 @@
 package com.google.samples.app.iosched.tv.di
 
 import android.content.Context
-import com.google.samples.app.iosched.tv.MainApplication
+import com.google.samples.app.iosched.tv.TVApplication
 import dagger.Module
 import dagger.Provides
 
 @Module
-class AppModule {
+class TVAppModule {
 
     @Provides
-    fun provideContext(application: MainApplication): Context {
+    fun provideContext(application: TVApplication): Context {
         return application.applicationContext
     }
 }

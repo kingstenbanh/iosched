@@ -1,7 +1,7 @@
 package com.google.samples.app.iosched.tv.di
 
 import com.google.samples.app.iosched.shared.di.SharedModule
-import com.google.samples.app.iosched.tv.MainApplication
+import com.google.samples.app.iosched.tv.TVApplication
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
@@ -16,12 +16,12 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AndroidSupportInjectionModule::class,
-        AppModule::class,
+        TVAppModule::class,
         SharedModule::class
     ]
 )
-interface AppComponent : AndroidInjector<MainApplication> {
+interface TVAppComponent : AndroidInjector<TVApplication> {
 
     @Component.Builder
-    abstract class Builder : AndroidInjector.Builder<MainApplication>()
+    abstract class Builder : AndroidInjector.Builder<TVApplication>()
 }
