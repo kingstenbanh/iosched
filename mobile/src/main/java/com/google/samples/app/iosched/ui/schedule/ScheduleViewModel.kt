@@ -11,15 +11,16 @@ import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay.DAY_1
 import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay.DAY_2
 import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay.DAY_3
 import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay.PRECONFERENCE_DAY
+import timber.log.Timber
 import javax.inject.Inject
 
 class ScheduleViewModel @Inject constructor(
     private val loadSessionsByDayUseCase: LoadSessionsByDayUseCase
-) : ViewModel() {
+) : ViewModel(), ScheduleEventListener {
 
     private var filters = SessionFilters()
 
-    lateinit var isLoading: LiveData<Boolean>
+    var isLoading: LiveData<Boolean>
 
     val errorMessage: LiveData<String>
     val errorMessageShown = MutableLiveData<Boolean>()
@@ -69,4 +70,12 @@ class ScheduleViewModel @Inject constructor(
         this.filters = filters
         loadSessionsByDayUseCase.executeAsync(filters, useCaseResult)
     }
+
+    override fun openSessionDetail(id: String) {
+        Timber.d("TODO: Open session detail for id: $id")
+    }
+}
+
+interface ScheduleEventListener {
+    fun openSessionDetail(id: String)
 }
