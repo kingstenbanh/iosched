@@ -15,7 +15,6 @@ import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay
 import com.google.samples.app.iosched.shared.util.viewModelProvider
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_schedule.*
-import kotlinx.android.synthetic.main.toolbar.*
 import javax.inject.Inject
 
 /**
@@ -52,7 +51,6 @@ class ScheduleFragment : DaggerFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        toolbar.setTitle(R.string.title_schedule)
         viewpager.offscreenPageLimit = COUNT - 1
         viewpager.adapter = ScheduleAdapter(childFragmentManager)
         tabs.setupWithViewPager(viewpager)
