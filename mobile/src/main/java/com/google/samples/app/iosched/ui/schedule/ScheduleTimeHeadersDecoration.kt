@@ -71,7 +71,7 @@ class ScheduleTimeHeadersDecoration(
             it.first to createHeader(it.second)
         }.toMap()
 
-    override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+    override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         if (timeSlots.isEmpty() || parent.isEmpty()) return
 
         var earliestFoundHeadersPos = -1
@@ -107,7 +107,7 @@ class ScheduleTimeHeadersDecoration(
         for (headerPos in timeSlots.keys.reversed()) {
             if (headerPos < earliestFoundHeadersPos) {
                 timeSlots[headerPos]?.let {
-                    val top = (prevHeaderTop - it.height).coerceAtLeast(paddingTop)
+                    val top = (prevHeaderTop - it.height).coerceAtMost(paddingTop)
                     c.withTranslation(y = top.toFloat()) {
                         it.draw(c)
                     }
