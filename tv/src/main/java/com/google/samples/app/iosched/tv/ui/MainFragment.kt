@@ -15,7 +15,6 @@
 package com.google.samples.app.iosched.tv.ui
 
 import android.os.Bundle
-import android.support.v17.leanback.app.BrowseFragment
 import android.support.v17.leanback.app.BrowseSupportFragment
 import android.support.v17.leanback.widget.ArrayObjectAdapter
 import android.support.v17.leanback.widget.HeaderItem
@@ -36,7 +35,7 @@ class MainFragment : BrowseSupportFragment() {
 
         title = getString(R.string.browse_title)
         badgeDrawable = ContextCompat.getDrawable(context, R.drawable.ic_banner)
-        headersState = BrowseFragment.HEADERS_ENABLED
+        headersState = BrowseSupportFragment.HEADERS_ENABLED
         isHeadersTransitionOnBackEnabled = true
 
         adapter = rowsAdapter

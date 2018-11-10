@@ -11,8 +11,6 @@ import org.threeten.bp.ZonedDateTime
 
 /**
  * Generates dummy session data to be used in tests.
- *
- * TODO: Move to testutils module b/72216577
  */
 object TestSessionDataSource : SessionDataSource, TagDataSource {
 
