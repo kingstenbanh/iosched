@@ -17,7 +17,7 @@ abstract class UseCase<in P, R> {
      * @param parameters the input parameters to run the use case with
      * @param result the MutableLiveData where the result is posted to
      */
-    fun executeAsync(parameters: P, result: MutableLiveData<Result<R>>) {
+    operator fun invoke(parameters: P, result: MutableLiveData<Result<R>>) {
         result.value = Result.Loading
 
         try {
@@ -43,9 +43,9 @@ abstract class UseCase<in P, R> {
      *
      * @param parameters the input parameters to run the use case with
      */
-    fun executeAsync(parameters: P): LiveData<Result<R>> {
+    operator fun invoke(parameters: P): LiveData<Result<R>> {
         val liveCallback: MutableLiveData<Result<R>> = MutableLiveData()
-        executeAsync(parameters, liveCallback)
+        this(parameters, liveCallback)
         return liveCallback
     }
 
@@ -64,3 +64,6 @@ abstract class UseCase<in P, R> {
     @Throws(RuntimeException::class)
     protected abstract fun execute(parameters: P): R
 }
+
+operator fun <R> UseCase<Unit, R>.invoke(): LiveData<Result<R>> = this(Unit)
+operator fun <R> UseCase<Unit, R>.invoke(result: MutableLiveData<Result<R>>) = this(Unit, result)

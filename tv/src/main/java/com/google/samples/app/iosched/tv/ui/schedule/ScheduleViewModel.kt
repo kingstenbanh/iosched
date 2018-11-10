@@ -5,6 +5,7 @@ import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
 import com.google.samples.app.iosched.shared.model.Session
 import com.google.samples.app.iosched.shared.result.Result
+import com.google.samples.app.iosched.shared.usecases.invoke
 import com.google.samples.app.iosched.shared.usecases.repository.LoadSessionsUseCase
 
 class ScheduleViewModel(loadSessionsUseCase: LoadSessionsUseCase): ViewModel() {
@@ -16,7 +17,7 @@ class ScheduleViewModel(loadSessionsUseCase: LoadSessionsUseCase): ViewModel() {
 
     init {
         // TODO: replace. Dummy async task
-        val liveResult: LiveData<Result<List<Session>>> = loadSessionsUseCase.executeAsync(Unit)
+        val liveResult: LiveData<Result<List<Session>>> = loadSessionsUseCase()
 
         sessions = Transformations.map(liveResult) { result ->
             (result as? Result.Success)?.data ?: emptyList()

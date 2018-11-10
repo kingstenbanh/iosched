@@ -6,6 +6,7 @@ import android.arch.lifecycle.ViewModel
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.samples.app.iosched.shared.result.Result
+import com.google.samples.app.iosched.shared.usecases.invoke
 import com.google.samples.app.iosched.shared.usecases.repository.LoadConferenceLocationUseCase
 import com.google.samples.app.iosched.shared.usecases.repository.LoadConferenceMinZoomUseCase
 import com.google.samples.app.iosched.shared.util.map
@@ -43,14 +44,14 @@ class MapViewModel @Inject constructor(
         markers = MutableLiveData()
 
         // Fetch conference location.
-        val conferenceLocationLiveResult = loadConferenceLocationUseCase.executeAsync(Unit)
+        val conferenceLocationLiveResult = loadConferenceLocationUseCase()
         conferenceLocationBounds = conferenceLocationLiveResult.map {
             errorMessageShown.value = it is Result.Error
             (it as? Result.Success)?.data
         }
 
         // Fetch map min zoom.
-        val minZoomLiveResult = loadConferenceMinZoomUseCase.executeAsync(Unit)
+        val minZoomLiveResult = loadConferenceMinZoomUseCase()
         minZoom = minZoomLiveResult.map {
             errorMessageShown.value = errorMessageShown.value!! || it is Result.Error
             (it as? Result.Success)?.data

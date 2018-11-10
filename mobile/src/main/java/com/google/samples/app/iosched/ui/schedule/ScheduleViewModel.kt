@@ -6,6 +6,7 @@ import android.arch.lifecycle.ViewModel
 import com.google.samples.app.iosched.shared.model.Session
 import com.google.samples.app.iosched.shared.model.Tag
 import com.google.samples.app.iosched.shared.result.Result
+import com.google.samples.app.iosched.shared.usecases.invoke
 import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay
 import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay.DAY_1
 import com.google.samples.app.iosched.shared.util.TimeUtils.ConferenceDay.DAY_2
@@ -38,8 +39,8 @@ class ScheduleViewModel @Inject constructor(
 
     init {
         // Load sessions and tags and store the result in `LiveData`s
-        loadSessionsByDayUseCase.executeAsync(filters, loadSessionsResult)
-        loadTagsByCategoryUseCase.executeAsync(Unit, loadTagsResult)
+        loadSessionsByDayUseCase(filters, loadSessionsResult)
+        loadTagsByCategoryUseCase(loadTagsResult)
 
         // map LiveData results from UseCase to each day's individual LiveData
         day1Sessions = loadSessionsResult.map {
@@ -84,12 +85,12 @@ class ScheduleViewModel @Inject constructor(
         } else {
             filters.remove(tag)
         }
-        loadSessionsByDayUseCase.executeAsync(filters, loadSessionsResult)
+        loadSessionsByDayUseCase(filters, loadSessionsResult)
     }
 
     override fun clearFilters() {
         filters.clearAll()
-        loadSessionsByDayUseCase.executeAsync(filters, loadSessionsResult)
+        loadSessionsByDayUseCase(filters, loadSessionsResult)
     }
 }
 
