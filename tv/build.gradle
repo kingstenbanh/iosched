@@ -60,7 +60,7 @@ dependencies {
     testImplementation "org.threeten:threetenbp:$rootProject.threetenbpVersion"
 
     // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.kotlinVersion"
 
     // Instrumentation tests
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
