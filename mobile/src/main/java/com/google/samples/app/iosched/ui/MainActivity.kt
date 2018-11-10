@@ -10,6 +10,7 @@ import com.google.samples.app.iosched.ui.map.MapFragment
 import com.google.samples.app.iosched.ui.schedule.ScheduleFragment
 import com.google.samples.app.iosched.shared.util.consume
 import com.google.samples.app.iosched.shared.util.inTransaction
+import com.google.samples.app.iosched.ui.info.InfoFragment
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -32,17 +33,10 @@ class MainActivity : DaggerAppCompatActivity() {
 
         navigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.navigation_schedule -> consume {
-                    replaceFragment(
-                        ScheduleFragment()
-                    )
-                }
-                R.id.navigation_feed -> consume {
-                    replaceFragment(
-                        FeedFragment()
-                    )
-                }
+                R.id.navigation_schedule -> consume { replaceFragment(ScheduleFragment()) }
+                R.id.navigation_feed -> consume { replaceFragment(FeedFragment()) }
                 R.id.navigation_map -> consume { replaceFragment(MapFragment()) }
+                R.id.navigation_info -> consume { replaceFragment(InfoFragment()) }
                 else -> false
             }
         }
@@ -53,10 +47,12 @@ class MainActivity : DaggerAppCompatActivity() {
         supportFragmentManager.inTransaction {
             replace(R.id.fragment_container, fragment)
         }
-        drawer_layout.setDrawerLockMode(when (fragment) {
-            is ScheduleFragment -> DrawerLayout.LOCK_MODE_UNLOCKED
-            else -> DrawerLayout.LOCK_MODE_LOCKED_CLOSED
-        })
+        drawer_layout.setDrawerLockMode(
+            when (fragment) {
+                is ScheduleFragment -> DrawerLayout.LOCK_MODE_UNLOCKED
+                else -> DrawerLayout.LOCK_MODE_LOCKED_CLOSED
+            }
+        )
     }
 
     override fun onBackPressed() {

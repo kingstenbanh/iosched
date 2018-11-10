@@ -1,5 +1,6 @@
 package com.google.samples.app.iosched.ui
 
+import com.google.samples.app.iosched.ui.info.InfoModule
 import com.google.samples.app.iosched.ui.map.MapModule
 import com.google.samples.app.iosched.ui.schedule.ScheduleModule
 import dagger.Module
@@ -17,10 +18,11 @@ internal abstract class MainModule {
     /**
      * Define in the modules list all other modules that are part of the MainActivity.
      */
-    // TODO: add in modules MapModule, FeedModule etc.
+    // TODO: add in module for FeedModule
     @ContributesAndroidInjector(modules = [
         ScheduleModule::class,
-        MapModule::class
+        MapModule::class,
+        InfoModule::class
     ])
     internal abstract fun mainActivity(): MainActivity
 }
