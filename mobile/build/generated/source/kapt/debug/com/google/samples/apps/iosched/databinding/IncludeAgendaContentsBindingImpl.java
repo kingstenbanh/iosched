@@ -128,7 +128,7 @@ public class IncludeAgendaContentsBindingImpl extends IncludeAgendaContentsBindi
         if ((dirtyFlags & 0x3L) != 0) {
             // api target 1
 
-            com.google.samples.apps.iosched.ui.schedule.agenda.AgendaItemBindingAdapterKt.agendaDuration(this.duration, agendaStartTime, agendaEndTime);
+            com.google.samples.apps.iosched.ui.sessiondetail.SessionDetailDataBindingAdaptersKt.timeString(this.duration, agendaStartTime, agendaEndTime);
             com.google.samples.apps.iosched.ui.schedule.agenda.AgendaItemBindingAdapterKt.agendaIcon(this.icon, agendaType);
             com.google.samples.apps.iosched.ui.schedule.agenda.AgendaItemBindingAdapterKt.agendaColor(this.mboundView1, agendaColor, agendaStrokeColor, mboundView1.getResources().getDimension(R.dimen.agenda_item_stroke));
             android.databinding.adapters.TextViewBindingAdapter.setText(this.title, agendaTitle);

@@ -37,7 +37,7 @@ public class FragmentSessionDetailBindingImpl extends FragmentSessionDetailBindi
         this(bindingComponent, root, mapBindings(bindingComponent, root, 18, sIncludes, sViewsWithIds));
     }
     private FragmentSessionDetailBindingImpl(android.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
-        super(bindingComponent, root, 2
+        super(bindingComponent, root, 1
             , (android.widget.ImageView) bindings[9]
             , (android.support.constraint.Guideline) bindings[14]
             , (android.support.constraint.Guideline) bindings[13]
@@ -73,7 +73,7 @@ public class FragmentSessionDetailBindingImpl extends FragmentSessionDetailBindi
     @Override
     public void invalidateAll() {
         synchronized(this) {
-                mDirtyFlags = 0x8L;
+                mDirtyFlags = 0x4L;
         }
         requestRebind();
     }
@@ -103,7 +103,7 @@ public class FragmentSessionDetailBindingImpl extends FragmentSessionDetailBindi
     public void setViewModel(@Nullable com.google.samples.apps.iosched.ui.sessiondetail.SessionDetailViewModel ViewModel) {
         this.mViewModel = ViewModel;
         synchronized(this) {
-            mDirtyFlags |= 0x4L;
+            mDirtyFlags |= 0x2L;
         }
         notifyPropertyChanged(BR.viewModel);
         super.requestRebind();
@@ -113,25 +113,14 @@ public class FragmentSessionDetailBindingImpl extends FragmentSessionDetailBindi
     protected boolean onFieldChange(int localFieldId, Object object, int fieldId) {
         switch (localFieldId) {
             case 0 :
-                return onChangeViewModelTimeString((android.arch.lifecycle.LiveData<java.lang.String>) object, fieldId);
-            case 1 :
                 return onChangeViewModelSession((android.arch.lifecycle.LiveData<com.google.samples.apps.iosched.shared.model.Session>) object, fieldId);
-        }
-        return false;
-    }
-    private boolean onChangeViewModelTimeString(android.arch.lifecycle.LiveData<java.lang.String> ViewModelTimeString, int fieldId) {
-        if (fieldId == BR._all) {
-            synchronized(this) {
-                    mDirtyFlags |= 0x1L;
-            }
-            return true;
         }
         return false;
     }
     private boolean onChangeViewModelSession(android.arch.lifecycle.LiveData<com.google.samples.apps.iosched.shared.model.Session> ViewModelSession, int fieldId) {
         if (fieldId == BR._all) {
             synchronized(this) {
-                    mDirtyFlags |= 0x2L;
+                    mDirtyFlags |= 0x1L;
             }
             return true;
         }
@@ -145,85 +134,69 @@ public class FragmentSessionDetailBindingImpl extends FragmentSessionDetailBindi
             dirtyFlags = mDirtyFlags;
             mDirtyFlags = 0;
         }
-        android.arch.lifecycle.LiveData<java.lang.String> viewModelTimeString = null;
         java.lang.String viewModelSessionRoomName = null;
         android.arch.lifecycle.LiveData<com.google.samples.apps.iosched.shared.model.Session> viewModelSession = null;
         com.google.samples.apps.iosched.shared.model.Session viewModelSessionGetValue = null;
         java.lang.String viewModelSessionAbstract = null;
         com.google.samples.apps.iosched.shared.model.Room viewModelSessionRoom = null;
-        java.lang.String viewModelTimeStringGetValue = null;
         java.util.List<com.google.samples.apps.iosched.shared.model.Tag> viewModelSessionTags = null;
+        org.threeten.bp.ZonedDateTime viewModelSessionStartTime = null;
         java.lang.String viewModelSessionTitle = null;
         java.util.Set<com.google.samples.apps.iosched.shared.model.Speaker> viewModelSessionSpeakers = null;
+        org.threeten.bp.ZonedDateTime viewModelSessionEndTime = null;
         com.google.samples.apps.iosched.ui.sessiondetail.SessionDetailViewModel viewModel = mViewModel;
 
-        if ((dirtyFlags & 0xfL) != 0) {
+        if ((dirtyFlags & 0x7L) != 0) {
 
 
-            if ((dirtyFlags & 0xdL) != 0) {
 
-                    if (viewModel != null) {
-                        // read viewModel.timeString
-                        viewModelTimeString = viewModel.getTimeString();
-                    }
-                    updateLiveDataRegistration(0, viewModelTimeString);
-
-
-                    if (viewModelTimeString != null) {
-                        // read viewModel.timeString.getValue()
-                        viewModelTimeStringGetValue = viewModelTimeString.getValue();
-                    }
-            }
-            if ((dirtyFlags & 0xeL) != 0) {
-
-                    if (viewModel != null) {
-                        // read viewModel.session
-                        viewModelSession = viewModel.getSession();
-                    }
-                    updateLiveDataRegistration(1, viewModelSession);
+                if (viewModel != null) {
+                    // read viewModel.session
+                    viewModelSession = viewModel.getSession();
+                }
+                updateLiveDataRegistration(0, viewModelSession);
 
 
-                    if (viewModelSession != null) {
-                        // read viewModel.session.getValue()
-                        viewModelSessionGetValue = viewModelSession.getValue();
-                    }
+                if (viewModelSession != null) {
+                    // read viewModel.session.getValue()
+                    viewModelSessionGetValue = viewModelSession.getValue();
+                }
 
 
-                    if (viewModelSessionGetValue != null) {
-                        // read viewModel.session.getValue().abstract
-                        viewModelSessionAbstract = viewModelSessionGetValue.getAbstract();
-                        // read viewModel.session.getValue().room
-                        viewModelSessionRoom = viewModelSessionGetValue.getRoom();
-                        // read viewModel.session.getValue().tags
-                        viewModelSessionTags = viewModelSessionGetValue.getTags();
-                        // read viewModel.session.getValue().title
-                        viewModelSessionTitle = viewModelSessionGetValue.getTitle();
-                        // read viewModel.session.getValue().speakers
-                        viewModelSessionSpeakers = viewModelSessionGetValue.getSpeakers();
-                    }
+                if (viewModelSessionGetValue != null) {
+                    // read viewModel.session.getValue().abstract
+                    viewModelSessionAbstract = viewModelSessionGetValue.getAbstract();
+                    // read viewModel.session.getValue().room
+                    viewModelSessionRoom = viewModelSessionGetValue.getRoom();
+                    // read viewModel.session.getValue().tags
+                    viewModelSessionTags = viewModelSessionGetValue.getTags();
+                    // read viewModel.session.getValue().startTime
+                    viewModelSessionStartTime = viewModelSessionGetValue.getStartTime();
+                    // read viewModel.session.getValue().title
+                    viewModelSessionTitle = viewModelSessionGetValue.getTitle();
+                    // read viewModel.session.getValue().speakers
+                    viewModelSessionSpeakers = viewModelSessionGetValue.getSpeakers();
+                    // read viewModel.session.getValue().endTime
+                    viewModelSessionEndTime = viewModelSessionGetValue.getEndTime();
+                }
 
 
-                    if (viewModelSessionRoom != null) {
-                        // read viewModel.session.getValue().room.name
-                        viewModelSessionRoomName = viewModelSessionRoom.getName();
-                    }
-            }
+                if (viewModelSessionRoom != null) {
+                    // read viewModel.session.getValue().room.name
+                    viewModelSessionRoomName = viewModelSessionRoom.getName();
+                }
         }
         // batch finished
-        if ((dirtyFlags & 0xeL) != 0) {
+        if ((dirtyFlags & 0x7L) != 0) {
             // api target 1
 
             android.databinding.adapters.TextViewBindingAdapter.setText(this.sessionDetailDescription, viewModelSessionAbstract);
             android.databinding.adapters.TextViewBindingAdapter.setText(this.sessionDetailRoom, viewModelSessionRoomName);
             com.google.samples.apps.iosched.ui.sessiondetail.SessionDetailDataBindingAdaptersKt.sessionSpeakers(this.sessionDetailSpeakerList, viewModelSessionSpeakers);
             com.google.samples.apps.iosched.ui.schedule.ScheduleBindingAdaptersKt.sessionTags(this.sessionDetailTagsContainer, viewModelSessionTags);
+            com.google.samples.apps.iosched.ui.sessiondetail.SessionDetailDataBindingAdaptersKt.timeString(this.sessionDetailTime, viewModelSessionStartTime, viewModelSessionEndTime);
             android.databinding.adapters.TextViewBindingAdapter.setText(this.sessionDetailTitle, viewModelSessionTitle);
             this.sessionDetailToolbarLayout.setTitle(viewModelSessionTitle);
-        }
-        if ((dirtyFlags & 0xdL) != 0) {
-            // api target 1
-
-            android.databinding.adapters.TextViewBindingAdapter.setText(this.sessionDetailTime, viewModelTimeStringGetValue);
         }
     }
     // Listener Stub Implementations
@@ -231,10 +204,9 @@ public class FragmentSessionDetailBindingImpl extends FragmentSessionDetailBindi
     // dirty flag
     private  long mDirtyFlags = 0xffffffffffffffffL;
     /* flag mapping
-        flag 0 (0x1L): viewModel.timeString
-        flag 1 (0x2L): viewModel.session
-        flag 2 (0x3L): viewModel
-        flag 3 (0x4L): null
+        flag 0 (0x1L): viewModel.session
+        flag 1 (0x2L): viewModel
+        flag 2 (0x3L): null
     flag mapping end*/
     //end
 }
