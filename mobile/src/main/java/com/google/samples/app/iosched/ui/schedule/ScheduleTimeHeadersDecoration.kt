@@ -19,6 +19,7 @@ import androidx.content.res.getDimensionPixelSizeOrThrow
 import androidx.graphics.withTranslation
 import androidx.text.inSpans
 import androidx.view.get
+import androidx.view.isEmpty
 import com.google.samples.app.iosched.R
 import com.google.samples.app.iosched.shared.model.Session
 import org.threeten.bp.ZonedDateTime
@@ -71,7 +72,7 @@ class ScheduleTimeHeadersDecoration(
         }.toMap()
 
     override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
-        if (timeSlots.isEmpty()) return
+        if (timeSlots.isEmpty() || parent.isEmpty()) return
 
         var earliestFoundHeadersPos = -1
         var prevHeaderTop = Int.MAX_VALUE
