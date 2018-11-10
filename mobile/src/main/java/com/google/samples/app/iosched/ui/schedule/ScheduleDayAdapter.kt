@@ -1,5 +1,7 @@
 package com.google.samples.app.iosched.ui.schedule
 
+import android.support.v7.recyclerview.extensions.ListAdapter
+import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView.Adapter
 import android.support.v7.widget.RecyclerView.ViewHolder
 import android.view.LayoutInflater
@@ -9,17 +11,7 @@ import com.google.samples.app.iosched.shared.model.Session
 
 class ScheduleDayAdapter(
     private val eventListener: ScheduleEventListener
-) : Adapter<SessionViewHolder>() {
-
-    private var sessions: List<Session> = emptyList()
-
-    fun setList(sessions: List<Session>) {
-        // TODO diff
-        this.sessions = sessions
-        notifyDataSetChanged()
-    }
-
-    override fun getItemCount(): Int = sessions.size
+) : ListAdapter<Session, SessionViewHolder>(SessionDiff) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SessionViewHolder {
         return SessionViewHolder(
@@ -28,7 +20,7 @@ class ScheduleDayAdapter(
     }
 
     override fun onBindViewHolder(holder: SessionViewHolder, position: Int) {
-        holder.bind(sessions[position])
+        holder.bind(getItem(position))
     }
 
 }
@@ -43,4 +35,13 @@ class SessionViewHolder(
         binding.eventListener = eventListener
         binding.executePendingBindings()
     }
+}
+
+object SessionDiff : DiffUtil.ItemCallback<Session>() {
+
+    override fun areItemsTheSame(oldItem: Session, newItem: Session): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: Session, newItem: Session) = (oldItem == newItem)
 }
