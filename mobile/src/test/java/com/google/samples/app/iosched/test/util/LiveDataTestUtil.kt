@@ -5,6 +5,11 @@ import android.arch.lifecycle.Observer
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 
+/**
+ * Safely handles observables from LiveData for testing.
+ *
+ * TODO: Move to testutils module b/72216577
+ */
 object LiveDataTestUtil {
 
     /**
