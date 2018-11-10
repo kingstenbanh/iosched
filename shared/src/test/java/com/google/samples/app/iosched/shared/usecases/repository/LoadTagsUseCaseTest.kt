@@ -13,10 +13,10 @@ import org.junit.Test
 class LoadTagsUseCaseTest {
     @Test
     fun returnsListOfTags() {
-        val loadTagsUseCase = LoadTagsUseCase(TagRepository(TestSessionDataSource))
+        val loadTagsUseCase = LoadTagsUseCase(TagRepository(TestTagDataSource))
         val tags: Result.Success<List<Tag>> =
             loadTagsUseCase.
                 executeNow(Unit) as Success<List<Tag>>
-        assertEquals(tags.data, TagRepository(TestSessionDataSource).getTags())
+        assertEquals(tags.data, TagRepository(TestTagDataSource).getTags())
     }
 }

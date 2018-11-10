@@ -2,6 +2,7 @@ package com.google.samples.app.iosched.shared.util
 
 import com.google.gson.GsonBuilder
 import com.google.gson.stream.JsonReader
+import com.google.samples.app.iosched.shared.model.Block
 import com.google.samples.app.iosched.shared.model.Session
 import com.google.samples.app.iosched.shared.model.Tag
 import com.google.samples.app.iosched.shared.util.testdata.*
@@ -18,6 +19,7 @@ object ConferenceDataJsonParser {
         val jsonReader = JsonReader(inputStream.bufferedReader())
         val gson = GsonBuilder()
             .registerTypeAdapter(SessionTemp::class.java, SessionDeserializer())
+            .registerTypeAdapter(Block::class.java, BlockDeserializer())
             .registerTypeAdapter(Tag::class.java, TagDeserializer())
             .create()
         val tempData: TestDataTemp = gson.fromJson(jsonReader, TestDataTemp::class.java)
@@ -58,6 +60,8 @@ object ConferenceDataJsonParser {
     }
 
     fun getSessions() = testData.sessions
+
+    fun getAgenda() = testData.blocks
 
     fun getTags() = testData.tags
 }

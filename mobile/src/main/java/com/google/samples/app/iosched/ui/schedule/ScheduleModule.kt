@@ -2,6 +2,7 @@ package com.google.samples.app.iosched.ui.schedule
 
 import android.arch.lifecycle.ViewModel
 import com.google.samples.app.iosched.di.ViewModelKey
+import com.google.samples.app.iosched.ui.schedule.agenda.ScheduleAgendaFragment
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -26,6 +27,13 @@ internal abstract class ScheduleModule {
      */
     @ContributesAndroidInjector
     internal abstract fun contributeScheduleDayFragment(): ScheduleDayFragment
+
+    /**
+     * Generates an [AndroidInjector] for the [ScheduleAgendaFragment] as a Dagger subcomponent of
+     * the [MainModule].
+     */
+    @ContributesAndroidInjector
+    internal abstract fun contributeScheduleAgendaFragment(): ScheduleAgendaFragment
 
     /**
      * Generates an [AndroidInjector] for the [ScheduleFilterFragment] as a Dagger subcomponent of

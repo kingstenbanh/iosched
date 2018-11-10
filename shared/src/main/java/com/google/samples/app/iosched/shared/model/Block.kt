@@ -10,14 +10,24 @@ data class Block(
     val title: String,
 
     /**
-     * The subtitle of the block. Example, "Registration" (with title "Badge Pick-Up").
+     * The type of agenda item. Example, "concert", or "meal".
      */
-    val subtitle: String,
+    val type: String,
 
     /**
-     * The kind of block. Example, "concert", or "meal".
+     * The color of the block.
      */
-    val kind: String,
+    val color: Int,
+
+    /**
+     * The stroke color of the block (defaults to [color])
+     */
+    val strokeColor: Int = color,
+
+    /**
+     * If [color] is dark i.e. overlaid text should be light (defaults to false)
+     */
+    val isDark: Boolean = false,
 
     /**
      * Start time

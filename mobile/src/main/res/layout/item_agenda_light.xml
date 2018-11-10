@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Alternative layout, identical to @layout/item_agenda_dark except without the dark theme
+     specified on the root view group, so contents use the default light theme. -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="agenda"
+            type="com.google.samples.app.iosched.shared.model.Block" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/spacing_micro"
+        android:paddingEnd="@dimen/margin_normal"
+        android:background="?selectableItemBackground">
+
+        <include
+            layout="@layout/include_agenda_contents"
+            app:agenda="@{agenda}" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

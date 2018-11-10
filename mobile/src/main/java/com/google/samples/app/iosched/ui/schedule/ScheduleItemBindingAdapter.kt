@@ -4,14 +4,21 @@ import android.content.Context
 import android.databinding.BindingAdapter
 import android.widget.TextView
 import com.google.samples.app.iosched.R
-import com.google.samples.app.iosched.shared.model.Session
-import com.google.samples.app.iosched.shared.util.duration
 import org.threeten.bp.Duration
+import org.threeten.bp.ZonedDateTime
 
-@BindingAdapter("sessionLengthLocation")
-fun sessionLengthLocation(textView: TextView, session: Session) {
-    textView.text = textView.context.getString(R.string.session_duration_location,
-        durationString(textView.context, session.duration), session.room.name)
+@BindingAdapter(value = ["sessionStart", "sessionEnd", "sessionRoom"])
+fun sessionLengthLocation(
+    textView: TextView,
+    startTime: ZonedDateTime,
+    endTime: ZonedDateTime,
+    room: String
+) {
+    textView.text = textView.context.getString(
+        R.string.session_duration_location,
+        durationString(textView.context, Duration.between(startTime, endTime)),
+        room
+    )
 }
 
 private fun durationString(context: Context, duration: Duration): String {
