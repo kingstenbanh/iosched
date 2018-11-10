@@ -64,6 +64,10 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$rootProject.dagger"
     kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger"
 
+    // Firebase
+    implementation "com.google.firebase:firebase-core:$rootProject.googlePlayServicesClientVersion"
+    implementation "com.google.firebase:firebase-firestore:$rootProject.googlePlayServicesClientVersion"
+
     // ThreeTenBP for the shared module only
     testImplementation "org.threeten:threetenbp:$rootProject.threetenbpVersion"
     compileOnly "org.threeten:threetenbp:$rootProject.threetenbpVersion:no-tzdb"
@@ -72,6 +76,8 @@ dependencies {
     testImplementation "android.arch.core:core-testing:$rootProject.archLifecycleVersion"
     testImplementation "junit:junit:$rootProject.junitVersion"
 }
+
+apply plugin: 'com.google.gms.google-services'
 
 // Force Dagger's transitive dependencies to use the project's version of the support libraries.
 configurations.all {
