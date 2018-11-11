@@ -22,7 +22,11 @@ import com.google.samples.apps.iosched.shared.util.ConferenceDataJsonParser
  * Returns data loaded from a local JSON file for development and testing.
  */
 object FakeSessionDataSource : SessionDataSource {
-    override fun getSessions() = ConferenceDataJsonParser.getSessions()
+    override fun getOfflineConferenceData(): ConferenceData? {
+        return BootstrapConferenceDataSource.loadAndParseBootstrapData()
+    }
 
-    override fun getSession(sessionId: String) = ConferenceDataJsonParser.getSession(sessionId)
+    override fun getConferenceData(): ConferenceData? {
+        return BootstrapConferenceDataSource.loadAndParseBootstrapData()
+    }
 }

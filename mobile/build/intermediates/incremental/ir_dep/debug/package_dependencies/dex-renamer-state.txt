@@ -1,4 +1,0 @@
-#Sat Nov 10 15:38:08 EST 2018
-base.0=/Users/kbanh/Documents/Projects/Android/iosched2/mobile/build/intermediates/transforms/dexMerger/debug/10
-path.0=classes.dex
-renamed.0=classes.dex

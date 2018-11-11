@@ -29,6 +29,9 @@ open class LoadSessionUseCase @Inject constructor(private val repository: Sessio
 
     override fun execute(parameters: String): Session {
         Thread.sleep(1000)
-        return repository.getSession(parameters)
+        return repository.getSessions().firstOrNull { it -> it.id == parameters }
+            ?: throw SessionNotFoundException()
     }
 }
+
+class SessionNotFoundException : Throwable()

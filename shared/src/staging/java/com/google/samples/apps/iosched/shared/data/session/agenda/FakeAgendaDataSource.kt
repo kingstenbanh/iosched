@@ -23,5 +23,5 @@ import com.google.samples.apps.iosched.shared.util.ConferenceDataJsonParser
  * Returns data loaded from a local JSON file for development and testing.
  */
 object FakeAgendaDataSource : AgendaDataSource {
-    override fun getAgenda() = ConferenceDataJsonParser.getAgenda()
+    override fun getAgenda() = StagingConferenceDataJsonParser.getAgenda()
 }
